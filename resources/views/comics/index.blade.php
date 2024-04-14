@@ -4,9 +4,9 @@
 
 <div class="container py-5">
 
-    <h1>Comics</h1>
+    <h1 class="pb-4">Comics</h1>
 
-    @dump($comics)
+    {{-- @dump($comics) --}}
 
     <table class="table mb-5">
         <thead>
@@ -22,7 +22,7 @@
             <tr>
                 <td>{{ $comic->title }}</td>
                 <td>{{ $comic->artists }}</td>
-                <td><a href="" class="btn btn-outline-light " >Visualizza</a></td>
+                <td><a href="{{ route('comics.show', $comic->id) }}" class="btn btn-outline-light " >Visualizza</a></td>
             </tr>
             @endforeach
 
