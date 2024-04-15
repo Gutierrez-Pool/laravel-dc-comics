@@ -53,7 +53,10 @@
             </table>
         </div>
     </div>
-    
+
+    <div class="pt-4">
+        <a href="{{route('comics.edit', $comic->id)}}" class="btn btn-warning">Modifica</a>
+    </div>
 </div>
 
 @endsection
