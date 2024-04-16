@@ -133,3 +133,4 @@ class ComicController extends Controller
         ])->validate();
     }
 }
+
