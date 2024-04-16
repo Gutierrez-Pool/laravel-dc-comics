@@ -11,7 +11,7 @@
             
             <div class="mb-3">
                 <label for="title" class="form-label">Titolo</label>
-                <input type="text" class="form-control" name="title" id="title" value="{{old("title")}}">
+                <input type="text" class="form-control" name="title" id="title" value="{{old("title")}}" required>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3">
                 <label for="series" class="form-label">Serie</label>
-                <input type="text" class="form-control" name="series" id="series" value="{{old("series")}}">
+                <input type="text" class="form-control" name="series" id="series" value="{{old("series")}}" required>
             </div>
             <div class="mb-3">
                 <label for="sale_date" class="form-label">Data di pubblicazione</label>
@@ -35,7 +35,7 @@
             </div>
             <div class="mb-3">
                 <label for="type" class="form-label">Tipo</label>
-                <input type="text" class="form-control" name="type" id="type" value="{{old("type")}}">
+                <input type="text" class="form-control" name="type" id="type" value="{{old("type")}}" required>
             </div>
             <div class="mb-3">
                 <label for="artists" class="form-label">Artisti</label>
