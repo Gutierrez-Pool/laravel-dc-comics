@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreComicRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -29,10 +30,12 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
 
-        $this->validation($request->all());
+        // $this->validation($request->all());
+        $request->validated();
+        
 
         $newComic = new Comic();
 
@@ -70,12 +73,12 @@ class ComicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comic $comic)
+    public function update(StoreComicRequest $request, Comic $comic)
     {
         // dd($request, $comic);
 
-        $this->validation($request->all());
-
+        // $this->validation($request->all());
+        $request->validated();
 
         $comic->title = $request->title;
         $comic->description = $request->description;
@@ -101,36 +104,6 @@ class ComicController extends Controller
 
         return redirect()->route('comics.index');
     }
-
-    // funzione privata per i controlli di validazione
-    private function validation($data) {
-        $validator = Validator::make($data, [
-            "title" => "required|max:100",
-            "description" => "nullable | max:5000",
-            "thumb" => "nullable | max:255",
-            "price"=> "nullable | max:7",
-            "series"=> "required|max:100",
-            "sale_date"=> "nullable",
-            "type"=> "required|max:100",
-            "artists"=> "nullable|max:1000",
-            "writers"=> "nullable|max:1000",
-        ], [
-            "title.required"=> "Devi inserire il titolo",
-            "title.max"=> "Il titolo deve avere meno di :max caratteri",
-            "description.max"=> "La descrizione deve avere meno di :max caratteri",
-            "thumb.max"=> "Il link dell'immagine deve avere meno di :max caratteri",
-            "price.max"=> "Il prezzo deve avere meno di :max caratteri",
-            "series.required"=> "Devi inserire la serie",
-            "series.max"=> "Le serie deve avere meno di :max caratteri",
-            "type.required"=> "Devi inserire il tipo",
-            "type.max"=> "Il tipo deve avere meno di :max caratteri",
-            "artists.max"=> "Artisti deve avere meno di :max caratteri",
-            "writers.max"=> "Scrittori deve avere meno di :max caratteri",
-
-            // "max"=> "Il campo :attribute deve avere massimo :max caratteri",
-            // "required"=> "Il campo :attribute deve essere inserito",
-            // possiamo creare messaggi generali per regole condivise tra piu campi
-        ])->validate();
-    }
+    
 }
 
